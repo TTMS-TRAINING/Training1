@@ -23,3 +23,9 @@ test('TTMS website', async ({ page }) => {
   // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle(/TTMS/);
 });
+
+test('Page to have in title', async ({ page }) => {
+  await page.goto('https://ttms.com/');
+
+  await expect(page).toHaveTitle(/TTMS/);
+});
