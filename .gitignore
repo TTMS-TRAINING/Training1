@@ -1,0 +1,9 @@
+.vs/VSWorkspaceState.json
+.vs/slnx.sqlite
+.vs/Playwright/v17/.wsuo
+.vs/Playwright/v17/DocumentLayout.json
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
