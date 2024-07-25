@@ -1,8 +1,6 @@
-import { test, expect } from '@playwright/test';
+test('fill in TTMS contact form', async ({ page }) => {
+  await page.goto('https://ttms.com//');
 
-test('has title', async ({ page }) => {
-  await page.goto('https://ttms.com/');
-
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/TTMS/);
+  // Open Contact us form
+  await page.getByRole('link', { name: 'Contact us' }).click();
 });
