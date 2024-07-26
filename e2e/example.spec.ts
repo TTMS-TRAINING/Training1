@@ -29,5 +29,5 @@ test('Name/Surname/Phone/Email', async ({ page }) => {
   await page.getByLabel('Name *', { exact: true }).fill('Adrian');
   await page.getByLabel('Surname *').fill('Jurczuk');
   await page.getByLabel('Phone').fill('555444333');
-  await page.getByLabel('E-mail *').fill('adria.jurczuk@ttms.pl');
+  await page.getByLabel('E-mail *').fill('adrian.jurczuk@ttms.pl');
 });
