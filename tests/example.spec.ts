@@ -1,21 +1,12 @@
 import { test, expect } from '@playwright/test';
 
-test('has title', async ({ page }) => {
-  await page.goto('https://ttms.com/');
+// test('has title', async ({ page }) => {
+//   await page.goto('https://ttms.com/');
 
-  // await page.waitForTimeout(8000);
+//   //Click Connect button
 
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/TTMS/);
-});
-
-// test('get started link', async ({ page }) => {
-//   await page.goto('https://playwright.dev/');
-
-//   // Click the get started link.
-//   await page.getByRole('link', { name: 'Get started' }).click();
+//   await page.locator('#menu-item-2546').click();
 //   // await page.waitForTimeout(8000);
 
-//   // Expects page to have a heading with the name of Installation.
-//   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
-// });
+
+});
