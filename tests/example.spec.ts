@@ -16,3 +16,8 @@ test('has title', async ({ page }) => {
 //   // Expects page to have a heading with the name of Installation.
 //   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 // });
+// test('has white background', async({page})=>{
+// await page.goto('https://ttms.com/');
+// await expect(page).toHaveScreenshot()
+
+// });
