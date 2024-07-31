@@ -11,10 +11,10 @@ await page.getByPlaceholder('Password').fill('secret_sauce')
 await page.getByRole('button').click();
 
 //Add an item to the cart
-await page.locator('#add-to-cart-sauce-labs-backpack').click();
+await page.click('#add-to-cart-sauce-labs-backpack');
 
 //Go to the cart
-await page.locator('.shopping_cart_link').click();
+await page.click('.shopping_cart_link');
 
 //Check out
 await page.getByRole('button', {name:'checkout'}).click();
