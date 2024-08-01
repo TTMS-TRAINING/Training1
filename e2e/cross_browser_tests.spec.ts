@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 
 [
-  { browserType: 'chromium', username: 'standard_user', password: 'secret_sauce', expectedURL: 'https://www.saucedemo.com/inventory.html', expectedDataTestValue: 'primary-header', expectedText: 'Swag Labs' },
+  { browserType: 'Google Chrome', username: 'standard_user', password: 'secret_sauce', expectedURL: 'https://www.saucedemo.com/inventory.html', expectedDataTestValue: 'primary-header', expectedText: 'Swag Labs' },
   { browserType: 'firefox', username: 'locked_out_user', password: 'secret_sauce', expectedURL: 'https://www.saucedemo.com', expectedDataTestValue: 'error', expectedText: 'Epic sadface: Sorry, this user has been locked out.' },
   { browserType: 'webkit', username: 'performance_glitch_user', password: 'secret_sauce', expectedURL: 'https://www.saucedemo.com/inventory.html', expectedDataTestValue: 'primary-header', expectedText: 'Swag Labs' },
 ].forEach(({ browserType, username, password, expectedURL, expectedDataTestValue, expectedText }) => {
