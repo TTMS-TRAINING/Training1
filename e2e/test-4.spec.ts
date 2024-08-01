@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('test 4 - buying', async ({ page }) => {
 
-// go to contact page
+// go to demo page
 await page.goto('https://www.saucedemo.com/');
 
 // fill in the user name field 
