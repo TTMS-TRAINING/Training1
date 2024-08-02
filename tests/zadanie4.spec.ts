@@ -47,4 +47,6 @@ await page.click('[data-test="finish"]');
 //check text on finish page
 await expect(page.locator('[data-test="complete-header"]')).toHaveText('Thank you for your order!');
 
+//gitignore, sprawdzenie działania 
+
 });
