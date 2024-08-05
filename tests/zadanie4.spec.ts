@@ -22,5 +22,4 @@ test('test', async ({ page }) => {
   await expect(page.getByRole('heading')).toHaveText('Thank you for your order!');
   await page.waitForTimeout(1000);
   await page.locator('[data-test="back-to-products"]').click();
-  await page.waitForTimeout(1000);
-});
+  });
