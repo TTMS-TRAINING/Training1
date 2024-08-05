@@ -1,8 +1,7 @@
 
-​
 import { test, expect } from '@playwright/test';
 
-test('Wypełnij formularz i kliknij Submit', async ({ page }) => {
+test('Zdanie-6 Formularz', async ({ page }) => {
   // Ustawienie dłuższego limitu czasu dla testu
   test.setTimeout(60000);
 
