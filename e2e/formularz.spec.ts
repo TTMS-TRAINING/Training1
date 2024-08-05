@@ -1,56 +1,53 @@
-
 import { test, expect } from '@playwright/test';
 
-test('Zdanie-6 Formularz', async ({ page }) => {
-  // Ustawienie dłuższego limitu czasu dla testu
-  test.setTimeout(60000);
-
+test('Complete the form and submit', async ({ page }) => {
   // Przejdź do strony formularza
-  await page.goto('https://demoqa.com/automation-practice-form', { timeout: 60000 });
+  await page.goto('https://demoqa.com/automation-practice-form');
 
-  // Wypełnij pola formularza
-  await page.fill('input[placeholder="First Name"]', 'Anna');
-  await page.fill('input[placeholder="Last Name"]', 'Nowak');
-  await page.fill('input[placeholder="name@example.com"]', 'anna.nowak@example.com');
+  // Wypełnienie pól tekstowych
+  await page.fill('#firstName', 'Aga');
+  await page.fill('#lastName', 'Gat');
+  await page.fill('#userEmail', 'aga.aga@example.com');
 
-  // Wybierz płeć (damska)
-  await page.check('input#gender-radio-2'); // Assuming this is the radio button for female
+  // Wybór płci (damska)
+  await page.click('label[for="gender-radio-2"]');
 
-  // Wypełnij numer telefonu
-  await page.fill('input[placeholder="Mobile Number"]', '9876543210');
+  // Wypełnienie numeru telefonu
+  await page.fill('#userNumber', '1234567890');
 
-  // Wybierz datę urodzenia
+  // Wybór daty urodzenia
   await page.click('#dateOfBirthInput');
-  await page.selectOption('.react-datepicker__month-select', '7'); // Sierpień = 7
-  await page.selectOption('.react-datepicker__year-select', '1992');
-  await page.click('.react-datepicker__day--015:not(.react-datepicker__day--outside-month)');
+  await page.selectOption('.react-datepicker__month-select', '4'); // Maj
+  await page.selectOption('.react-datepicker__year-select', '1990');
+  await page.click('.react-datepicker__day--015'); // 15 dzień miesiąca
 
-  // Wypełnij pole z przedmiotami
-  await page.fill('input#subjectsInput', 'English');
+  // Wpisanie przedmiotów (Subjects)
+  await page.fill('#subjectsInput', 'Maths');
   await page.keyboard.press('Enter');
 
-  // Zaznacz hobby
-  await page.check('input#hobbies-checkbox-1'); // Reading
-  await page.check('input#hobbies-checkbox-2'); // Music
+  // Wybór hobby (np. Reading)
+  await page.click('label[for="hobbies-checkbox-2"]');
 
-  // Ścieżka do pliku na Twoim komputerze
-  const filePath = 'C:\\Users\\agnie\\Downloads\\roses-3887414_1280.webp';
+// Wczytanie pliku
+const filePath = 'kubek.jpg'; // Podaj właściwą ścieżkę do pliku
+await page.setInputFiles('#uploadPicture', filePath);
 
-  // Załaduj plik
-  await page.setInputFiles('input#uploadPicture', filePath);
+  // Wpisanie adresu
+  await page.fill('#currentAddress', '123 Main St');
 
-  // Wypełnij pole z adresem
-  await page.fill('textarea[placeholder="Current Address"]', '456 Elm Street, Gotham');
+  // Wybór stanu
+await page.click('#state'); // Kliknięcie, aby otworzyć listę rozwijaną
+await page.locator('div[id^="react-select-3-option"]').filter({ hasText: 'NCR' }).click(); // Wybór opcji NCR
 
-  // Wybierz stan i miasto
-  await page.click('#state');
-  await page.click('text=Uttar Pradesh');
-  await page.click('#city');
-  await page.click('text=Agra');
+// Wybór miasta
+await page.click('#city'); // Kliknięcie, aby otworzyć listę rozwijaną
+await page.locator('div[id^="react-select-4-option"]').filter({ hasText: 'Delhi' }).click(); // Wybór opcji Delhi
 
-  // Kliknij przycisk Submit
+
+  // Kliknięcie przycisku Submit
   await page.click('#submit');
 
-  // Sprawdź, czy formularz został pomyślnie przesłany
-  await expect(page.locator('#example-modal-sizes-title-lg')).toHaveText('Thanks for submitting the form');
+  // Możesz sprawdzić, czy formularz został poprawnie wysłany, np. przez sprawdzenie wyświetlonego okna modalnego
+  const modalTitle = page.locator('.modal-title');
+  await expect(modalTitle).toHaveText('Thanks for submitting the form');
 });
