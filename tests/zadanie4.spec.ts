@@ -18,6 +18,7 @@ test('test', async ({ page }) => {
   await page.locator('[data-test="postalCode"]').fill('123');
   await page.locator('[data-test="continue"]').click();
   await page.locator('[data-test="finish"]').click();
+  // assertion
   await expect(page.getByRole('heading')).toHaveText('Thank you for your order!');
   await page.waitForTimeout(1000);
   await page.locator('[data-test="back-to-products"]').click();
