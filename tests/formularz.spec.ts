@@ -1,5 +1,4 @@
 import { test, expect} from '@playwright/test';
-import { TIMEOUT } from 'dns';
 
 test('test', async ({ page }) => {
       await page.goto('https://demoqa.com/automation-practice-form/');
