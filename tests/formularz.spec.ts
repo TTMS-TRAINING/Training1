@@ -32,5 +32,9 @@ test('test', async ({ page }) => {
   await page.locator('#city svg').click();
   await page.waitForTimeout(500);
   await page.getByText('Panipat', { exact: true }).click();
+
+  const filePath = 'jk.jpg';
+  await page.setInputFiles('#uploadPicture', filePath);
+
   await page.getByRole('button', { name: 'Submit' }).click();
   });
