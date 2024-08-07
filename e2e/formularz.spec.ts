@@ -38,7 +38,7 @@ test('fill form', async ({ page }) => {
   // select and check Date of Birth
   await selectAndCheckDateOfBirth(page, '05', 'Jul', '1986');
 
-  // fill and check Subjects TODO
+  // fill and check Subjects
   await fillAndCheck_Subjects(page, ['Maths', 'English']);
 
   // select and check Hobby
@@ -97,27 +97,7 @@ async function selectAndCheckGender(page: Page, value: string) {
 }
 
 async function selectAndCheckDateOfBirth(page: Page, day: string, month: string, year: string) {
-  let dayOption: string = '';
-  switch (day) {
-    case '01':
-      dayOption = '.react-datepicker__day--001';
-      break;
-    case '02':
-      dayOption = '.react-datepicker__day--002';
-      break;
-    case '03':
-      dayOption = '.react-datepicker__day--003';
-      break;
-    case '04':
-      dayOption = '.react-datepicker__day--004';
-      break;
-    case '05':
-      dayOption = '.react-datepicker__day--005';
-      break;
-    //TODO other options 6, 7, ... 31
-    default:
-      break;
-  }
+  let dayOption: string = `.react-datepicker__day--0${day}`;
   let monthOption: string = '';
   switch (month) {
     case "Jan":
@@ -147,7 +127,15 @@ async function selectAndCheckDateOfBirth(page: Page, day: string, month: string,
     case "Sep":
       monthOption = '8';
       break;
-    //TODO other months                             
+    case "Oct":
+      monthOption = '9';
+      break;
+    case "Nov":
+      monthOption = '10';
+      break;
+    case "Dec":
+      monthOption = '11';
+      break;
     default:
       monthOption = '0';
       break;
@@ -165,7 +153,6 @@ async function selectAndCheckDateOfBirth(page: Page, day: string, month: string,
   expect(dateInputValue).toBe(`${day} ${month} ${year}`);
 }
 
-//TODO
 async function fillAndCheck_Subjects(page: Page, subjects: string[]): Promise<void> {
   for (const subject of subjects) {
     const subjectLocator = page.locator('#subjectsInput');
@@ -176,7 +163,7 @@ async function fillAndCheck_Subjects(page: Page, subjects: string[]): Promise<vo
     // arrow down
     await page.keyboard.press('ArrowDown');
     // wait
-    await page.waitForTimeout(1000); 
+    await page.waitForTimeout(1000);
     // enter
     await page.keyboard.press('Enter');
     // check
