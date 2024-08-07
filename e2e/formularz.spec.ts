@@ -17,8 +17,7 @@ test.afterEach(async ({ page }) => {
   await page.close();
 });
 
-test('fill form', async ({ page }) => {
-
+test('should correctly fill out the form and show a confirmation modal after submission', async ({ page }) => {
 
   // fill and check first name
   await fillAndCheckField(page, '#firstName', 'Ania');
@@ -48,7 +47,7 @@ test('fill form', async ({ page }) => {
   await selectAndCheck_Picture(page, 'fixtures', 'zero-step.jpeg');
 
   // fill and check Current Address
-  await fillAndCheckField_CurrentAddress(page, 'Białystok, \nul. Piękna 1 m 7');
+  await fillAndCheckField(page, '#currentAddress', 'Białystok, \nul. Piękna 1 m 7');
 
   // select and check State and City
   await selectAndCheck_StateAndCity(page, 'Haryana', 'Panipat');
@@ -93,7 +92,7 @@ async function selectAndCheckGender(page: Page, value: string) {
   // click on label (Female) gender
   const genderLabelLocator = page.locator(labelGender);
   await genderLabelLocator.click();
-  await genderLocator.isChecked();
+  await expect(genderLocator).toBeChecked();
 }
 
 async function selectAndCheckDateOfBirth(page: Page, day: string, month: string, year: string) {
@@ -159,11 +158,11 @@ async function fillAndCheck_Subjects(page: Page, subjects: string[]): Promise<vo
     // fill subject
     await subjectLocator.click();
     await subjectLocator.fill(subject);
-
     // arrow down
     await page.keyboard.press('ArrowDown');
     // wait
-    await page.waitForTimeout(1000);
+    const suggestionLocator = page.locator('.subjects-auto-complete__option');
+    await suggestionLocator.waitFor({ state: 'visible' }); 
     // enter
     await page.keyboard.press('Enter');
     // check
@@ -177,7 +176,7 @@ async function fillAndCheck_Subjects(page: Page, subjects: string[]): Promise<vo
 async function selectAndCheck_Hobbies(page: Page, hobbies: string[]) {
   for (const hobby of hobbies) {
     await page.getByText(hobby).click();
-    await expect(page.getByText(hobby)).toBeChecked();
+    await expect(page.getByText(hobby, {exact: true})).toBeChecked();
   }
 }
 
@@ -190,29 +189,20 @@ async function selectAndCheck_Picture(page: Page, pathToFile: string, fileName: 
   await expect(page.getByLabel('Select picture')).toHaveValue(`C:\\fakepath\\${fileName}`);
 }
 
-async function fillAndCheckField_CurrentAddress(page: Page, value: string) {
-  const addressField = page.getByPlaceholder('Current Address');
-  await addressField.click();
-  await addressField.fill(value);
-
-  // verify that the field has the expected value
-  await expect(addressField).toHaveValue(value);
-}
-
 async function selectAndCheck_StateAndCity(page: Page, state: string, city: string) {
   // select State
-  await page.locator('#state').click();
+  const stateLocator = page.locator('#state'); 
+  await stateLocator.click();
   await page.getByText(state, { exact: true }).click();
 
   // check if State is selected
-  const selectedState = await page.locator('#state .css-1uccc91-singleValue').textContent();
-  await expect(selectedState).toBe(state);
+  await expect(stateLocator).toContainText(state);
 
   // select City
-  await page.locator('#city').click();
+  const cityLocator = page.locator('#city'); 
+  await cityLocator.click();
   await page.getByText(city, { exact: true }).click();
 
   // check if City is selected
-  const selectedCity = await page.locator('#city .css-1uccc91-singleValue').textContent();
-  await expect(selectedCity).toBe(city);
+  await expect(cityLocator).toContainText(city);
 }
