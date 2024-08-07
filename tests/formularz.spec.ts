@@ -33,8 +33,7 @@ test('test', async ({ page }) => {
   await page.waitForTimeout(500);
   await page.getByText('Panipat', { exact: true }).click();
 
-  const filePath = 'jk.jpg';
-  await page.setInputFiles('#uploadPicture', filePath);
+  await page.setInputFiles('#uploadPicture', 'jk.jpg');
 
   await page.getByRole('button', { name: 'Submit' }).click();
   });
