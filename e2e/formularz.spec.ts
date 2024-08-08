@@ -60,5 +60,5 @@ test('Interaction with the elements', async ({ page }) => {
     // await page.screenshot({ path: 'form-page-confirm.png' });
 
     //Closing it all
-    await page.getByRole('button', { name: 'Close' }).click();
+    await page.getByRole('button', { name: 'Close' }).click({force:true});
   });
