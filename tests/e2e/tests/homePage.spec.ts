@@ -4,24 +4,25 @@ import { HomePage } from '../pages/homePage';
 test.describe('TTMS Home Page', () => {
   let homePage: HomePage;
 
+  // Setup przed każdym testem
   test.beforeEach(async ({ page }) => {
-    homePage = new HomePage(page);
-    await homePage.navigate('https://ttms.pl');  // Użycie metody navigate z homePage
-    //await page.getByTestId('uc-accept-all-button').click();  // Akceptacja cookies
-    await homePage.acceptCookiesAll();
+    homePage = new HomePage(page); // Inicjalizacja obiektu HomePage
+    await homePage.navigate(); // Nawigacja do strony głównej i akceptacja cookies
   });
 
+  // Test przejścia do strony kontaktowej
   test('should navigate to Contact page', async ({ page }) => {
-    await homePage.clickContact();
-    await expect(page).toHaveURL(/.*contact/);
+    await homePage.clickContact(); // Kliknięcie linku kontaktowego
+    await expect(page).toHaveURL(/.*contact/); // Sprawdzenie, czy URL zawiera "contact"
   });
 
+  // Test zmiany kontrastu i jego weryfikacji
   test('should change contrast and verify it', async ({ page }) => {
-    await homePage.changeContrast();
-  
+    await homePage.changeContrast(); // Zmiana ustawień kontrastu
+
     // Zweryfikuj konkretną zmianę, np. kolor tła
     const isContrastChanged = await homePage.isContrastChanged();
-    
+
     // Sprawdź, czy kontrast rzeczywiście się zmienił
     expect(isContrastChanged).toBe(true); // Oczekujemy, że kontrast zmienił się na oczekiwany
   });

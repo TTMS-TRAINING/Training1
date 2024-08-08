@@ -1,36 +1,30 @@
-import { Page, Locator } from '@playwright/test';
+import { Page, Locator, expect } from '@playwright/test';
 import { BasePage } from './basePage';
 
 export class HomePage extends BasePage {
-  private header: Locator;
-  private aboutUsLink: Locator;
-  private servicesLink: Locator;
+  // Lokalizator dla linku kontaktowego
   private contactLink: Locator;
-  private searchInput: Locator;
 
+  // Konstruktor klasy HomePage
   constructor(page: Page) {
-    super(page);  // Wywołanie konstruktora klasy bazowej
-    this.header = page.locator('header');
-    this.aboutUsLink = page.locator('text=O nas');
-    this.servicesLink = page.locator('text=Usługi');
-    this.contactLink = page.locator('#menu-item-2546');
-    this.searchInput = page.locator('input[placeholder="Szukaj"]');
+    super(page); // Wywołanie konstruktora klasy bazowej
+    this.contactLink = page.locator('#menu-item-2546'); // Inicjalizacja lokalizatora dla linku kontaktowego
   }
 
-  async clickAboutUs() {
-    await this.aboutUsLink.click();
+  // Metoda do nawigacji na stronę główną
+  async navigate() {
+    await this.page.goto('https://ttms.pl'); // Przechodzi do strony głównej
+    await this.acceptCookiesAll(); // Kliknięcie przycisku akceptacji cookies
+
+    // Sprawdzenie, czy URL jest zgodny z oczekiwanym
+    await expect(this.page).toHaveURL('https://ttms.pl'); // Upewnia się, że URL strony głównej jest poprawny
   }
 
-  async clickServices() {
-    await this.servicesLink.click();
-  }
-
+  // Metoda do kliknięcia linku kontaktowego
   async clickContact() {
-    await this.contactLink.click();
-  }
+    await this.contactLink.click(); // Kliknięcie w link kontaktowy
 
-  async search(text: string) {
-    await this.searchInput.fill(text);
-    await this.searchInput.press('Enter');
+    // Sprawdzenie, czy URL po kliknięciu linku kontaktowego jest zgodny z oczekiwanym
+    await expect(this.page).toHaveURL(/.*contact/); // Upewnia się, że URL zawiera 'contact'
   }
 }
