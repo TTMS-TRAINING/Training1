@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { ContactPage } from '../pages/contactPage';
+import { HomePage } from '../pages/homePage';
 
 test.describe('TTMS Contact Page', () => {
   let contactPage: ContactPage;
@@ -37,5 +38,10 @@ test.describe('TTMS Contact Page', () => {
 
     // Sprawdź, czy kontrast rzeczywiście się zmienił
     expect(isContrastChanged).toBe(true); // Oczekujemy, że kontrast zmienił się na oczekiwany
+  });
+
+  test('Czy zadzaiła about us', async ({ page }) => {
+    await contactPage.aboutUS();
+
   });
 });

@@ -1,7 +1,8 @@
 import { Page, Locator, expect } from '@playwright/test';
 import { BasePage } from './basePage';
 
-export class ContactPage extends BasePage {
+
+export class ContactPage extends BasePage{
   // Prywatne lokalizatory dla elementów formularza kontaktowego
   private contactForm: Locator;
   private nameInput: Locator;

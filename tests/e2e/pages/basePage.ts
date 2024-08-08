@@ -7,12 +7,14 @@ export class BasePage {
   // Prywatne lokalizatory, dostępne tylko wewnątrz tej klasy
   private contrastSwitch: Locator;
   private acceptCookies: Locator;
+  private AboutUsMenu: Locator;
 
   // Konstruktor, który inicjalizuje lokalizatory i przypisuje obiekt 'Page'
   constructor(page: Page) {
     this.page = page;
     this.contrastSwitch = page.locator('#header__nav--contrast-switch'); // Lokalizator przycisku zmiany kontrastu
     this.acceptCookies = page.getByTestId('uc-accept-all-button'); // Lokalizator przycisku akceptacji cookies
+    this.AboutUsMenu = page.locator('#menu-item-2567');
   }
 
   // Metoda do nawigacji na podany URL
@@ -39,5 +41,10 @@ export class BasePage {
 
     // Zakładamy, że po zmianie kontrastu kolor tła zmienia się na czarny (można dostosować do rzeczywistej wartości)
     return backgroundColor === 'rgb(0, 0, 0)';
+  }
+  async aboutUS(){
+
+    await this.AboutUsMenu.hover();
+
   }
 }
