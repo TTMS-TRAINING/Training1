@@ -9,14 +9,13 @@
     "undici-types": "^5.26.5"
   },
   "devDependencies": {
-    "@playwright/test": "^1.45.2",
+    "@playwright/test": "^1.46.0",
     "@types/node": "^20.14.11"
   },
   "scripts": {
-  "test": "playwright test"
+    "test": "playwright test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC"
 }
-
