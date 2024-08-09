@@ -8,7 +8,7 @@ export class HomePage extends BasePage {
     constructor(page: Page) {
         super(page);
         this.header = page.locator('h1'); // Definicja locatora w konstruktorze
-        this.contactLink = page.locator('a[href="https://ttms.com/contact/"]'); // Definicja locatora w konstruktorze
+        this.contactLink = page.locator('#menu-item-2546');
     }
 
     async getHeaderText() {
