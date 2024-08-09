@@ -53,10 +53,10 @@ test.describe('TTMS Home Page', () => {
     await expect(page.locator('#menu-item-2565')).toContainText('Sustainable TTMS');
   })
 
-  //test ('Contact page inside home page', async({page}) => {
-  //
-  //    await  contactPage.navigate();
+  //test('Contact page inside home page', async ({ page }) => {
+
+  //  await contactPage.navigate();
 
 
-  //  });
+  //});
 });
