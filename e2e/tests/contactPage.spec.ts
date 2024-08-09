@@ -2,30 +2,28 @@ import { test, expect } from '@playwright/test';
 import { ContactPage } from '../pages/ContactPage';
 import { HomePage } from '../pages/HomePage';
 import { testData } from "../utils/testData";
+import { BasePage } from '../pages/BasePage';
 
 test.describe('TTMS Contact Page', () => {
   let contactPage: ContactPage;
+  let basePage: BasePage;
 
   // Setup przed każdym testem
   test.beforeEach(async ({ page }) => {
-    contactPage = new ContactPage(page); // Inicjalizacja obiektu ContactPage
-    await contactPage.navigate(); // Nawigacja do strony kontaktowej
-    // await contactPage.acceptCookiesAll(); // Akceptacja cookies (odkomentuj, jeśli jest potrzebna)
+    contactPage = new ContactPage(page);
+    basePage = new BasePage(page) 
+    
+    await basePage.navigateTo('https://ttms.com/contact/');
+    await basePage.acceptCookiesAll();
   });
 
   // Test wypełniania i weryfikacji formularza kontaktowego
   test('should fill and assert the contact form', async ({ page }) => {
-    // Dane testowe
-    const name = 'Test';
-    const surname = 'Testalski';
-    const phone = '123123123';
-    const email = 'pawel@example.com';
-    const message = 'Wiadomość testowa';
 
     // Wprowadzenie danych do formularza
-    await contactPage.fillContactForm(name, surname, phone, email, message);
+    await contactPage.fillContactForm(testData.name, testData.surname, testData.phone, testData.email, testData.message);
 
     // Weryfikacja wartości pól formularza
-    await contactPage.verifyFormValues(name, surname, phone, email, message);
+    await contactPage.verifyFormValues(testData.name, testData.surname, testData.phone, testData.email, testData.message);
   });
 });

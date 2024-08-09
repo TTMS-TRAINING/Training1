@@ -6,7 +6,7 @@ export class BasePage {
 
     constructor(page: Page) {
         this.page = page;
-        this.acceptCookies = page.getByTestId('uc-accept-all-button'); // Lokalizator przycisku akceptacji cookies
+          this.acceptCookies = page.getByTestId('uc-accept-all-button'); // Lokalizator przycisku akceptacji cookies
     }
 
     async navigateTo(url: string) {
