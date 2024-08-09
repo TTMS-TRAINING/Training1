@@ -1,4 +1,4 @@
-import { Page, Locator } from '@playwright/test';
+import { Page, Locator, expect } from '@playwright/test';
 
 export class BasePage {
   // Chronione pole 'page' dostępne dla klas dziedziczących
@@ -8,15 +8,19 @@ export class BasePage {
   private contrastSwitch: Locator;
   private acceptCookies: Locator;
   private AboutUsMenu: Locator;
+  protected AboutUsSubmenu: Locator;
 
   // Konstruktor, który inicjalizuje lokalizatory i przypisuje obiekt 'Page'
   constructor(page: Page) {
     this.page = page;
     this.contrastSwitch = page.locator('#header__nav--contrast-switch'); // Lokalizator przycisku zmiany kontrastu
     this.acceptCookies = page.getByTestId('uc-accept-all-button'); // Lokalizator przycisku akceptacji cookies
-    this.AboutUsMenu = page.locator('#menu-item-2567');
+    this.AboutUsMenu = page.locator('#menu-item-2567 > a');
+    this.AboutUsSubmenu = page.locator('#menu-item-2567 .sub-menu');
+
   }
 
+  
   // Metoda do nawigacji na podany URL
   async navigate(url: string) {
     await this.page.goto(url);
@@ -45,6 +49,7 @@ export class BasePage {
   async aboutUS(){
 
     await this.AboutUsMenu.hover();
+    await expect(this.AboutUsSubmenu).toBeVisible();
 
   }
 }
