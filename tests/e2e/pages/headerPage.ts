@@ -15,6 +15,9 @@ export class HeaderPage extends BasePage {
     private AboutUsSubmenuLink1: Locator;
     private AboutUsSubmenuLink2: Locator;
     private AboutUsSubmenuLink3: Locator;
+    private LogoTTMS: Locator;
+    private SpecializationsMenu: Locator;
+    private IndustriesMenu: Locator;
 
     constructor(page: Page) {
         super(page);
@@ -25,6 +28,9 @@ export class HeaderPage extends BasePage {
         this.AboutUsSubmenuLink1 = page.getByRole('link', { name: 'Who we are' });
         this.AboutUsSubmenuLink2 = page.getByRole('link', { name: 'Pressroom' });
         this.AboutUsSubmenuLink3 = page.getByRole('link', { name: 'Sustainable TTMS' });
+        this.LogoTTMS = page.getByRole('link', { name: 'ttms-logo-white' });
+        this.SpecializationsMenu = page.getByRole('link', { name: 'Specializations' });
+        this.IndustriesMenu = page.getByRole('link', { name: 'Industries' });
     }
 
 
@@ -52,6 +58,19 @@ export class HeaderPage extends BasePage {
         await this.AboutUsMenu.hover();  // Upewnij się, że submenu jest widoczne
         await this.AboutUsSubmenuLink3.click();
         await expect(this.page).toHaveURL(/sustainable-ttms/);  // Sprawdź, czy URL zawiera "sustainable-ttms"
+    }
+    async clickAndVerifyLogo() {
+        await this.LogoTTMS.click();
+        await expect(this.page).toHaveURL('https://ttms.com/');
+        await expect(this.LogoTTMS).toHaveClass('header__logo');
+    }
+    async Specializations() {
+        await expect(this.SpecializationsMenu).toHaveText('Specializations');
+    }
+
+    async Industries() {
+        await expect(this.IndustriesMenu).toHaveText('Industries');
+
     }
 
 }

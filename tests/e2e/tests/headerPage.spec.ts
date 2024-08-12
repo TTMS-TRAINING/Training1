@@ -27,6 +27,23 @@ test.describe('TTMS Header Page', () => {
 
     });
 
+    test('Verify TTMS Logo', async ({ page }) => {
+
+        await headerPage.clickAndVerifyLogo();
+
+    });
+
+    test('Verify Specializations menu item', async ({ page }) => {
+
+        await headerPage.Specializations();
+
+    });
+
+    test('Verify Industries menu item', async ({ page }) => {
+        await headerPage.Industries();
+
+    });
+
 
 
 });
