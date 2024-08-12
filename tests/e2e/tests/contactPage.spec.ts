@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { ContactPage } from '../pages/contactPage';
 import { HomePage } from '../pages/homePage';
+import { contactFormData } from '../../resources/testData';
 
 test.describe('TTMS Contact Page', () => {
   let contactPage: ContactPage;
@@ -14,18 +15,13 @@ test.describe('TTMS Contact Page', () => {
 
   // Test wypełniania i weryfikacji formularza kontaktowego
   test('should fill and assert the contact form', async ({ page }) => {
-    // Dane testowe
-    const name = 'Paweł';
-    const surname = 'Kowalski';
-    const phone = '123123123';
-    const email = 'pawel@example.com';
-    const message = 'Wiadomość testowa';
+  
 
     // Wprowadzenie danych do formularza
-    await contactPage.fillContactForm(name, surname, phone, email, message);
+    await contactPage.fillContactForm(contactFormData.name, contactFormData.surname, contactFormData.phone, contactFormData.email, contactFormData.message);
 
     // Weryfikacja wartości pól formularza
-    await contactPage.verifyFormValues(name, surname, phone, email, message);
+    await contactPage.verifyFormValues(contactFormData.name, contactFormData.surname, contactFormData.phone, contactFormData.email, contactFormData.message);
   });
 
   // Test zmiany kontrastu i jego weryfikacji
