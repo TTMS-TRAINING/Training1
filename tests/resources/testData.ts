@@ -4,4 +4,4 @@ export const contactFormData = {
     phone: '123123123',
     email: 'pawel@example.com',
     message: 'Wiadomość testowa'
-  };
+};

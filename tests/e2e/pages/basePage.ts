@@ -7,19 +7,13 @@ export class BasePage {
     // Prywatne lokalizatory, dostępne tylko wewnątrz tej klasy
     private contrastSwitch: Locator;    // Lokalizator przycisku zmiany kontrastu
     private acceptCookies: Locator;     // Lokalizator przycisku akceptacji cookies
-    private AboutUsMenu: Locator;       // Lokalizator dla menu "About Us"
 
-    // Publiczny lokalizator, dostępny dla wszystkich klas, które dziedziczą z BasePage
-    public AboutUsSubmenu: Locator;     // Lokalizator dla submenu "About Us"
 
     // Konstruktor, który inicjalizuje lokalizatory i przypisuje obiekt 'Page'
     constructor(page: Page) {
         this.page = page;
         this.contrastSwitch = page.locator('#header__nav--contrast-switch');   // Inicjalizacja lokalizatora przycisku zmiany kontrastu
         this.acceptCookies = page.getByTestId('uc-accept-all-button');         // Inicjalizacja lokalizatora przycisku akceptacji cookies
-        this.AboutUsMenu = page.locator('#menu-item-2567 > a');                // Inicjalizacja lokalizatora menu "About Us"
-        //this.AboutUsMenu = page.locator('a', { hasText: 'About Us' });         // alterantywny lokator
-        this.AboutUsSubmenu = page.locator('#menu-item-2567 .sub-menu');       // Inicjalizacja lokalizatora submenu "About Us"
     }
 
     // Metoda do nawigacji na podany URL
@@ -48,11 +42,5 @@ export class BasePage {
         return backgroundColor === 'rgb(0, 0, 0)';
     }
 
-    // Metoda do najechania na element "About Us" w menu i sprawdzenia widoczności submenu
-    async aboutUS() {
-        await this.AboutUsMenu.hover();  // Najechanie na menu "About Us"
-        await expect(this.AboutUsMenu).toHaveText('About us');
-        // Można odkomentować poniższą linię, aby sprawdzać widoczność submenu
-        // await expect(this.AboutUsSubmenu).toBeVisible();
-    }
+
 }

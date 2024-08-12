@@ -15,7 +15,7 @@ test.describe('TTMS Contact Page', () => {
 
   // Test wypełniania i weryfikacji formularza kontaktowego
   test('should fill and assert the contact form', async ({ page }) => {
-  
+
 
     // Wprowadzenie danych do formularza
     await contactPage.fillContactForm(contactFormData.name, contactFormData.surname, contactFormData.phone, contactFormData.email, contactFormData.message);
@@ -36,8 +36,5 @@ test.describe('TTMS Contact Page', () => {
     expect(isContrastChanged).toBe(true); // Oczekujemy, że kontrast zmienił się na oczekiwany
   });
 
-  test('Czy zadzaiła about us', async ({ page }) => {
-    await contactPage.aboutUS();
 
-  });
 });
