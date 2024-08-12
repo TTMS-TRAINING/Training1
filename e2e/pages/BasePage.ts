@@ -2,11 +2,11 @@ import { Page, Locator, expect } from "@playwright/test";
 
 export class BasePage {
   protected page: Page;
-  private acceptAllButtona: Locator;
+  private acceptAllButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.acceptAllButtona = this.page.getByRole("button", {
+    this.acceptAllButton = this.page.getByRole("button", {
       name: "Accept All",
     });
   }
@@ -18,6 +18,6 @@ export class BasePage {
   }
 
   async acceptAllCookies() {
-    if (this.acceptAllButtona) await this.acceptAllButtona.click();
+    if (this.acceptAllButton) await this.acceptAllButton.click();
   }
 }
