@@ -13,50 +13,21 @@ test.describe('TTMS Home Page', () => {
     homePage = new HomePage(page); // Inicjalizacja obiektu HomePage
     contactPage = new ContactPage(page);
     basePage = new BasePage(page);
+
     await homePage.navigate(); // Nawigacja do strony głównej i akceptacja cookies
   });
 
   // Test przejścia do strony kontaktowej
-  test('should navigate to Contact page', async ({ page }) => {
+  test('should navigate to Contact page i wypelni wszystkie pola', async ({ page }) => {
     await homePage.clickContact(); // Kliknięcie linku kontaktowego
-
+    await contactPage.fillContactForm(testData.);
+    await contactPage.verifyFormValues(dane!);
   });
 
-  test('schould navigate to Career page', async ({ page }) => {
-
-    await homePage.clickCareer();
-
+  // Test przejścia do strony kontaktowej
+  test('should navigate to Contact page i wypelni wszystkie pola1', async ({ page }) => {
+    await homePage.clickContact(); // Kliknięcie linku kontaktowego
+    await contactPage.fillContactForm(testData.);
+    await contactPage.verifyFormValues(dane!);
   });
-
-  test('schould navigate to Blog', async ({ page }) => {
-
-    await homePage.clickBlog();
-
-  });
-
-  // Test zmiany kontrastu i jego weryfikacji
-  test('should change contrast and verify it', async ({ page }) => {
-    await homePage.changeContrast(); // Zmiana ustawień kontrastu
-
-    // Zweryfikuj konkretną zmianę, np. kolor tła
-    const isContrastChanged = await homePage.isContrastChanged();
-
-    // Sprawdź, czy kontrast rzeczywiście się zmienił
-    expect(isContrastChanged).toBe(true); // Oczekujemy, że kontrast zmienił się na oczekiwany
-  });
-
-  test('About us Menu', async ({ page }) => {
-    await homePage.aboutUS();
-    await expect(homePage.AboutUsSubmenu).toBeVisible();
-    await expect(page.locator('#menu-item-2538')).toContainText('Who we are'); //lokatory do przeniesienia na home page, albo base page i stworzenie testu który będzie sprawdzał tak naprawdę cały header
-    await expect(page.locator('#menu-item-2556')).toContainText('Pressroom');
-    await expect(page.locator('#menu-item-2565')).toContainText('Sustainable TTMS');
-  })
-
-  //test('Contact page inside home page', async ({ page }) => {
-
-  //  await contactPage.navigate();
-
-
-  //});
 });

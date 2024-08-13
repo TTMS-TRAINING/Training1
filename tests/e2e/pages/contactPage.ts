@@ -25,7 +25,7 @@ export class ContactPage extends BasePage{
   }
 
   // Metoda do nawigacji na stronę kontaktową i akceptacji cookies
-  async navigate() {
+  async navigateAndS() {
     await this.page.goto('https://ttms.pl/contact'); // Przechodzi do strony kontaktowej
     await this.acceptCookiesAll(); // Kliknięcie przycisku akceptacji cookies
   }
