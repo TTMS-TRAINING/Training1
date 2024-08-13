@@ -19,6 +19,7 @@ export class HeaderPage extends BasePage {
     private CaseStudiesMenu: Locator;   // Lokalizator dla menu "Case Studies"
     private BlogMenu: Locator;          // Lokalizator dla menu "Blog"
     private CareerMenu: Locator;        // Lokalizator dla menu "Career"
+    private LanguageSwitch: Locator;
 
     constructor(page: Page) {
         super(page);
@@ -35,7 +36,8 @@ export class HeaderPage extends BasePage {
         this.IndustriesMenu = page.getByRole('link', { name: 'Industries' });  // Lokalizator dla menu "Industries"
         this.CaseStudiesMenu = page.getByRole('link', { name: 'Case studies' });  // Lokalizator dla menu "Case Studies"
         this.BlogMenu = page.locator('#menu-item-2544').getByRole('link', { name: 'Blog' });            // Lokalizator dla menu "Blog"
-        this.CareerMenu = page.locator('#menu-item-7258').getByRole('link', { name: 'Career' });          // Lokalizator dla menu "Career"
+        this.CareerMenu = page.locator('#menu-item-7258').getByRole('link', { name: 'Career' });
+        this.LanguageSwitch = page.locator('#container > header > div > div > div.header__content--right > div.header__nav--lang-switch > div > ul > li > a');         // Lokalizator dla menu "Career"
     }
 
     // Metoda do sprawdzania menu "About Us"
@@ -105,4 +107,12 @@ export class HeaderPage extends BasePage {
         await this.CareerMenu.click();
         await expect(this.page).toHaveURL(/career/);
     }
+    async LangugaeSwitchCheck() {
+        await expect(this.LanguageSwitch).toHaveText('EN');
+        await this.LanguageSwitch.click();
+
+
+
+    }
+
 }

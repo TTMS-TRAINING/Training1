@@ -52,4 +52,9 @@ test.describe('TTMS Header Page', () => {
     test('Verify Career menu item', async ({ page }) => {
         await headerPage.Career(); // Sprawdzenie, czy menu "Career" jest poprawne
     });
+
+    test('Verify LanguageSwitcher', async ({ page }) => {
+        await headerPage.LangugaeSwitchCheck();
+
+    });
 });
