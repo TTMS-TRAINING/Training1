@@ -16,12 +16,12 @@ export class ContactPage extends BasePage {
     }
 
     async initFields() {
-        this.name = this.page.getByRole('textbox', { name: 'Name' });
-        this.surname = this.page.getByRole('textbox', { name: 'Surname' })
-        this.phone = this.page.getByRole('textbox', { name: 'Phone' })
-        this.email = this.page.getByRole('textbox', { name: 'E-mail' });
-        this.message = this.page.getByRole('textbox', { name: 'Message' });
-        this.consent = this.page.getByText('I consent to the processing');
+        this.name = this.page.getByLabel("Name *", { exact: true });
+        this.surname = this.page.getByLabel("Surname *", { exact: true });
+        this.phone = this.page.getByLabel("Phone", { exact: true });
+        this.email = this.page.getByLabel("E-mail *", { exact: true });
+        this.message = this.page.getByLabel("Message", { exact: true });
+        this.consent = this.page.locator('.wpcf7-list-item-label')
         this.sendButton = this.page.getByRole('button', { name: 'Send a message' });
     }
     async fillForm(contact: ContactData) {
@@ -33,7 +33,7 @@ export class ContactPage extends BasePage {
         await this.message.fill(contact.message);
         if (contact.consent) {
             await this.consent.check();
-        } else { this.consent.uncheck() };
+         } else { this.consent.uncheck() };
     }
 
     async checkValidation() {
