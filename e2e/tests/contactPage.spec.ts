@@ -1,29 +1,22 @@
-import { test, expect } from '@playwright/test';
-import { ContactPage } from '../pages/ContactPage';
-import { HomePage } from '../pages/HomePage';
-import { testData } from "../utils/testData";
-import { BasePage } from '../pages/BasePage';
+import { test, expect } from '@playwright/test'
+import { ContactPage } from '../pages/ContactPage'
 
-test.describe('TTMS Contact Page', () => {
-  let contactPage: ContactPage;
-  let basePage: BasePage;
+test.describe('Contact Page Test', () => {
+	test('Filling in the contact fields', async ({ page }) => {
+		const contactPage = new ContactPage(page)
+		await contactPage.navigateTo('https://ttms.com/contact/')
 
-  // Setup przed każdym testem
-  test.beforeEach(async ({ page }) => {
-    contactPage = new ContactPage(page);
-    basePage = new BasePage(page) 
-    
-    await basePage.navigateTo('https://ttms.com/contact/');
-    await basePage.acceptCookiesAll();
-  });
+		await contactPage.fillNameField('John')
+		await contactPage.fillSurnameField('Kowalsky')
+		await contactPage.fillPhoneField('700800900')
+		await contactPage.fillEmailField('john.kowalsky@example.com')
+		await contactPage.fillMessageField('Test is the best')
 
-  // Test wypełniania i weryfikacji formularza kontaktowego
-  test('should fill and assert the contact form', async ({ page }) => {
-
-    // Wprowadzenie danych do formularza
-    await contactPage.fillContactForm(testData.name, testData.surname, testData.phone, testData.email, testData.message);
-
-    // Weryfikacja wartości pól formularza
-    await contactPage.verifyFormValues(testData.name, testData.surname, testData.phone, testData.email, testData.message);
-  });
-});
+		// Sprawdzenie, czy pola zostały poprawnie wypełnione
+		await expect(contactPage.getNameField()).toHaveValue('John')
+		await expect(contactPage.getSurnameField()).toHaveValue('Kowalsky')
+		await expect(contactPage.getPhoneField()).toHaveValue('700800900')
+		await expect(contactPage.getEmailField()).toHaveValue('john.kowalsky@example.com')
+		await expect(contactPage.getMessageField()).toHaveValue('Test is the best')
+	})
+})
