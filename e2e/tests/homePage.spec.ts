@@ -13,6 +13,6 @@ test.describe('Home Page Tests', () => {
         const homePage = new HomePage(page);
         await homePage.navigateTo('https://ttms.pl');
         await homePage.clickContactLink();
-        await expect(page).toHaveURL('https://ttms.com/contact/');
+        await expect(page).toHaveURL('https://ttms.com/contact/xxx');
     });
 });
