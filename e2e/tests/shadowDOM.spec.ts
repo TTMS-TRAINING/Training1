@@ -33,10 +33,12 @@ test("Scenario 2 : Multiple Open Shadow Roots ( Nested Shadow Roots)", async () 
   await page.waitForSelector(".dropbtn", {
     state: "visible",
   });
+
   await page.locator("#userName input#pizza").fill("Mozarella"); // element is inside nested shadow DOM
 
   await page.waitForTimeout(5000);
 });
+
 test.use({ viewport: { width: 1400, height: 1000 } });
 test("Scenario 3 : Element is inside an iframe inside a Shadow Root.", async () => {
   const browser = await chromium.launch({
@@ -47,16 +49,33 @@ test("Scenario 3 : Element is inside an iframe inside a Shadow Root.", async () 
 
   await page.goto("https://selectorshub.com/xpath-practice-page/");
   await page.waitForTimeout(5000);
-  await page.getByRole('link', { name: 'Click to practice iframe' }).click();
-  //await page.frameLocator('#pact1').getByPlaceholder('Destiny').click();
-  //await page.frameLocator('#pact1').getByPlaceholder('Destiny').fill('Test');
-  //await page.frameLocator('#pact1').getByRole('button', { name: 'Close it' }).click();
+  await page.getByRole("link", { name: "Click to practice iframe" }).click();
   await page.waitForSelector(".jackPart", {
     state: "visible",
   });
-  await page.frameLocator('#pact1').getByPlaceholder('Destiny').click();
-  await page.frameLocator('#pact1').getByPlaceholder('Destiny').fill('Test');
-  await page.frameLocator('#pact1').getByRole('button', { name: 'Close it' }).click();
+
+  await page.frameLocator("#pact1").getByPlaceholder("Destiny").click();
+  await page.frameLocator("#pact1").getByPlaceholder("Destiny").fill("Test");
+
+  await page.waitForTimeout(5000);
+});
+
+
+
+test.use({ viewport: { width: 1400, height: 1000 } });
+test("TTMS", async () => {
+  const browser = await chromium.launch({
+    headless: false,
+  });
+  const context = await browser.newContext();
+  const page = await context.newPage();
+
+  await page.goto("TTMS");
+  await page.waitForSelector(".dropbtn", {
+    state: "visible",
+  });
+
+  await page.locator("#userName input#pizza").fill("Mozarella"); // element is inside nested shadow DOM
 
   await page.waitForTimeout(5000);
 });
