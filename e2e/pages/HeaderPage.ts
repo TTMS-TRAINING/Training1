@@ -15,6 +15,9 @@ export class Header {
         this.contactLink = page.locator('nav a[href="/kontakt"]'); // Przykładowy selektor dla linku "Kontakt"
     }
 
+
+
+    
     async clickHome() {
         await this.homeLink.click();
     }
