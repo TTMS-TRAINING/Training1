@@ -5,3 +5,8 @@ export const contactFormData = {
     email: 'pawel@example.com',
     message: 'Wiadomość testowa'
 };
+export const selectorshubData = {
+    userName: 'testUser',
+    pizzaName: 'Pizza',
+    destinyInput: 'New York',
+};
