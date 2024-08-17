@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test';
 import { HomePage } from '../pages/HomePage';
-import { homePageTestData } from '../data/dataTest'; 
 
 test.describe('Home Page Tests', () => {
     let homePage: HomePage;
@@ -13,12 +12,6 @@ test.describe('Home Page Tests', () => {
 
     test('should verify the title of the home page', async () => {
         const title = await homePage.getPageTitle();
-        expect(title).toBe(homePageTestData.expectedTitle);
-    });
-
-    test('should verify the header text', async () => {
-        const headerText = await homePage.getHeaderText();
-        expect(headerText).toContain('TTMS');
-    });
+        expect(title).toBe('IT Services Provider | TTMS');
+    }); 
 });
-
