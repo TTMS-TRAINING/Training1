@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { ContactPage } from "../pages/ContactPage";
+import { ContactPage } from "../pages/ttms/ContactPage";
 import { testDataContact1 } from "../fixtures/TestData";
 
 test.describe("Contact Page Tests", () => {
@@ -11,13 +11,10 @@ test.describe("Contact Page Tests", () => {
     await contactPage.acceptAllCookies();
   });
 
-  // test.afterEach(async( {page}) => {
-  // page.close();});
-
   test("should correctly fill the form and do not subbmit", async ({
     page,
   }) => {
-    await contactPage.page.waitForSelector('form', { state: 'visible' });
+    await contactPage.page.waitForSelector("form", { state: "visible" });
     await contactPage.fillForm(
       testDataContact1.name,
       testDataContact1.surname,
