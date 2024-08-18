@@ -1,6 +1,6 @@
 import { Page, Locator } from '@playwright/test';
 
-export class BasicPage {
+export class BasePage {
     protected page: Page;
 
     constructor(page: Page) {
@@ -12,7 +12,7 @@ export class BasicPage {
     }
 
     async acceptCookies() {
-        const acceptCookiesButton: Locator = this.page.locator('[data-testid="uc-accept-all-button"]');
+        const acceptCookiesButton: Locator = this.page.locator('#onetrust-accept-btn-handler');
         if (await acceptCookiesButton.isVisible()) {
             await acceptCookiesButton.click();
         }
@@ -22,6 +22,4 @@ export class BasicPage {
         return this.page.title();
     }
 }
-
-
 
