@@ -10,6 +10,10 @@ test.describe("Contact Page Tests", () => {
     await contactPage.navigateTo("https://ttms.com/contact");
     await contactPage.acceptAllCookies();
   });
+
+  // test.afterEach(async( {page}) => {
+  // page.close();});
+
   test("should correctly fill the form and do not subbmit", async ({
     page,
   }) => {

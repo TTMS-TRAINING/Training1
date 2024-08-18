@@ -1,8 +1,8 @@
-import { Page, Locator, expect } from "@playwright/test";
+import { Page, Locator, test, expect } from "@playwright/test";
 
 export class BasePage {
   protected page: Page;
-  private acceptAllButton: Locator;
+  protected acceptAllButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -12,12 +12,18 @@ export class BasePage {
   }
 
   async navigateTo(url: string) {
-    await this.page.goto(url, {
-      waitUntil: "networkidle",
-    });
+    await this.page.goto(url, { waitUntil: "networkidle" });
   }
 
   async acceptAllCookies() {
-    if (this.acceptAllButton) await this.acceptAllButton.click();
+    await this.page.waitForFunction(() => document.readyState === "complete");
+
+    try {
+      await this.acceptAllButton.waitFor({ state: "visible", timeout: 60000 });
+      await this.acceptAllButton.click();
+    } catch (error) {
+      console.error("Przycisk 'Accept All' nie pojawił się w ciągu 60 sekund.");
+      throw error;
+    }
   }
 }

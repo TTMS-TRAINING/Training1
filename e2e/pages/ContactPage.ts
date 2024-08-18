@@ -2,7 +2,6 @@ import { Page, Locator, expect } from "@playwright/test";
 import { BasePage } from "./BasePage";
 
 export class ContactPage extends BasePage {
-  protected acceptAllButton: Locator;
   private name: Locator;
   private surname: Locator;
   private phone: Locator;
