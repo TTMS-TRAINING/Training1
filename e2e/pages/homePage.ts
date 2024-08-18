@@ -10,6 +10,5 @@ export class HomePage extends BasicPage {
         await this.navigateTo('http://ttms.pl');
     }
 
-    // Dodaj inne specyficzne metody dla strony głównej, jeśli są potrzebne
 }
 
