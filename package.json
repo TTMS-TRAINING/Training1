@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Training repo",
   "main": "index.js",
+<<<<<<< HEAD
   "scripts": {},
   "keywords": [],
   "author": "",
@@ -11,4 +12,17 @@
     "@playwright/test": "^1.45.2",
     "@types/node": "^20.14.11"
   }
+=======
+  "directories": {
+    "test": "tests"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.45.2",
+    "@types/node": "^20.14.11"
+  },
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+>>>>>>> ad142c6df9ce3e1a8cee4c6539be417b7cb06d70
 }
