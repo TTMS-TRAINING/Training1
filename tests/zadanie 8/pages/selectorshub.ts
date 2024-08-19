@@ -73,6 +73,8 @@ export class SelectorsHub {
 
     // Metoda wypełniająca pole Destiny wewnątrz iframe
     async selectDestiny() {
+        // dodanie timeout do poprawnego działania w trace viewer
+        await this.page.waitForTimeout(5000);
         // Kliknięcie w link do iframe z wymuszeniem kliknięcia, nawet jeśli nie jest jeszcze w pełni widoczny
         await this.IframeLink.click({ force: true });
 
