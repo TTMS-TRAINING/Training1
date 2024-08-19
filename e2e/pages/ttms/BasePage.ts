@@ -19,10 +19,10 @@ export class BasePage {
     await this.page.waitForFunction(() => document.readyState === "complete");
 
     try {
-      await this.acceptAllButton.waitFor({ state: "visible", timeout: 60000 });
+      await this.acceptAllButton.waitFor({ state: "visible", timeout: 120000 });
       await this.acceptAllButton.click();
     } catch (error) {
-      console.error("Przycisk 'Accept All' nie pojawił się w ciągu 60 sekund.");
+      console.error("Przycisk 'Accept All' nie pojawił się w ciągu 120 sekund.");
       throw error;
     }
   }

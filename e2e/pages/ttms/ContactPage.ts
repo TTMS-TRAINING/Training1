@@ -17,6 +17,10 @@ export class ContactPage extends BasePage {
     this.message = page.getByLabel("Message", { exact: true });
   }
 
+  public getPage() {
+    return this.page;
+  }
+
   async fillName(text: string) {
     await this.name.click();
     await this.name.fill(text);
