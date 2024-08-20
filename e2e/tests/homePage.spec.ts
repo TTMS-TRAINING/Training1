@@ -19,7 +19,7 @@ test.describe('Home Page Tests', () => {
 
     test('should verify the header text', async () => {
         const headerText = await homePage.getHeaderText();
-        expect(headerText).toContain('Systemy IT w oparciu o AI na wyciągnięcie ręki. Jesteśmy nowoczesnym i zaufanym partnerem w IT');
+        expect(headerText).toContain('Systemy IT w oparciu o AI na wyciągnięcie ręki. Jesteśmy  nowoczesnym i zaufanym partnerem w IT');
     });
 });
 

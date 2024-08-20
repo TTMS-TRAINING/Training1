@@ -12,7 +12,7 @@ export class BasePage {
     }
 
     async acceptCookies() {
-        const acceptCookiesButton: Locator = this.page.locator('#onetrust-accept-btn-handler');
+        const acceptCookiesButton: Locator = this.page.locator('[data-testid="uc-accept-all-button"]');
         if (await acceptCookiesButton.isVisible()) {
             await acceptCookiesButton.click();
         }
