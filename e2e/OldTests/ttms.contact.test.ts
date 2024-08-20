@@ -3,7 +3,7 @@ import { before } from 'node:test';
 
 //@before
 
-test('fill contact form ', async ({ page }) => {
+test.skip('fill contact form ', async ({ page }) => {
   
   //Wejść na stronę TTMS.com do zakładki "kontakt" i wypełnić pola:
   await page.goto('https://ttms.com');

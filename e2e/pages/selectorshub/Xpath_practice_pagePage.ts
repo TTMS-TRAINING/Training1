@@ -9,31 +9,37 @@ export class XpathPracticePage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.UserNameInput = page.locator('#userName #kils');
-    this.PizzaNameInput = page.locator('#app2 #pizza');
-   // this.ClickToPracticeIframeInsideShadowDomScenarioButton = page.locator("a[href='https://selectorshub.com/iframe-in-shadow-dom/']");
-   this.ClickToPracticeIframeInsideShadowDomScenarioButton = page.getByRole('link', { name: 'Click to practice iframe' });
+    this.UserNameInput = page.locator("#userName #kils");
+    this.PizzaNameInput = page.locator("#app2 #pizza");
+    this.ClickToPracticeIframeInsideShadowDomScenarioButton = page.getByRole(
+      "link",
+      { name: "Click to practice iframe inside shadow dom scenario" }
+    );
   }
-  async getUserNameInput(): Promise<Locator>{
+  async getPage(): Promise<Page> {
+    return this.page;
+  }
+  async getUserNameInput(): Promise<Locator> {
     return this.UserNameInput;
   }
-  async getPizzaNameInput(): Promise<Locator>{
+  async getPizzaNameInput(): Promise<Locator> {
     return this.PizzaNameInput;
   }
-  
+  async getClickToPracticeIframeInsideShadowDomScenarioButton(): Promise<Locator> {
+    return this.ClickToPracticeIframeInsideShadowDomScenarioButton;
+  }
+
   async fillField(locator: Locator, text: string) {
     await locator.click();
     await locator.fill(text);
   }
-  
 
-  // TODO 
+  // TODO
   async clickPracticeIframeLink() {
-    const locator = this.page.frameLocator(`a[href='https://selectorshub.com/iframe-in-shadow-dom/']`).getByText('Click to practice iframe inside shadow dom scenario');
-await locator.click();
-//    await this.ClickToPracticeIframeInsideShadowDomScenarioButton.click();
+    await this.ClickToPracticeIframeInsideShadowDomScenarioButton.press('Enter');
   }
-    
-
-
+// spr inny
+  public getClickToIframeLink(): Locator {
+    return this.page.locator('a[href="/iframe-in-shadow-dom/"]');
+  }
 }

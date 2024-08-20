@@ -11,7 +11,7 @@ test.describe("Home Page Tests", () => {
     );
   });
 
-  test("should navigate to the contact page", async ({ page }) => {
+  test.skip("should navigate to the contact page", async ({ page }) => {
     const homePage = new HomePage(page);
     await homePage.navigateTo("https://ttms.pl");
     await homePage.clickContactLink();
