@@ -35,7 +35,7 @@ test('Filling out the form', async ({ page }) => {
 	await page.locator('#subjectsInput').fill('Sci')
 	await page.getByText(' Computer Science', { exact: true }).click()
 
-	await expect(page.locator('//*[@id="subjectsContainer"]')).toHaveText('Economics');
+	await expect(page.locator('//*[@id="subjectsContainer"]/div/div[1]/div[1]')).toHaveText('Economics');
     await expect(page.locator('//*[@id="subjectsContainer"]/div/div[1]/div[2]')).toHaveText('Computer Science');
 	//Hobbies
 	await page.locator('#hobbies-checkbox-2').click({ force: true })

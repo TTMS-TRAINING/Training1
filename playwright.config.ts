@@ -11,11 +11,7 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-<<<<<<< HEAD
   testDir: './tests',
-=======
-  testDir: './e2e',
->>>>>>> main
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -33,10 +29,6 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-<<<<<<< HEAD
-=======
-    screenshot: 'only-on-failure', // Take screenshot only when a test fails
->>>>>>> main
   },
 
   /* Configure projects for major browsers */
