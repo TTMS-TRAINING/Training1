@@ -9,6 +9,7 @@ export class HomePage extends BasePage {
 	// Deklaruje prywatne właściwości `header` i `contactLink`, które są typu `Locator`. Służą one do przechowywania selektorów elementów na stronie.
 	private header: Locator
 	private contactLink: Locator
+	private blogLink: Locator
 
 	// Konstruktor klasy `HomePage`, który przyjmuje obiekt `Page` jako argument.
 	constructor(page: Page) {
@@ -20,6 +21,7 @@ export class HomePage extends BasePage {
 
 		// Inicjalizuje właściwość `contactLink`, przypisując jej lokalizator dla linku do strony kontaktowej, co oznacza, że `contactLink` będzie odwoływać się do linku kontaktowego na stronie.
 		this.contactLink = page.locator('a[href="https://ttms.com/contact/"]').first()
+		this.blogLink = page.locator('a[href="https://ttms.com/blog/"]').first()
 	}
 
 	// Asynchroniczna metoda `getHeaderText`, która zwraca tekst zawartości elementu `header` (nagłówka strony).
@@ -30,5 +32,8 @@ export class HomePage extends BasePage {
 	// Asynchroniczna metoda `clickContactLink`, która klika w element `contactLink`, czyli w link do strony kontaktowej.
 	async clickContactLink() {
 		await this.contactLink.click()
+	}
+	async clickBlogLink() {
+		await this.blogLink.click()
 	}
 }
