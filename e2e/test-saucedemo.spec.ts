@@ -43,5 +43,6 @@ test('Complete purchase on SauceDemo', async ({ page }) => {
 
   // Asercja weryfikująca, czy zakup został ukończony poprawnie
   const confirmationMessage = await page.textContent('.complete-header');
-  expect(confirmationMessage).toContain( "Thank you for your order!");
+  expect(confirmationMessage).toContain("Thank you for your order!");
 });
+
