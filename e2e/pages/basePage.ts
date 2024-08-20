@@ -1,6 +1,6 @@
 import { Page, Locator } from '@playwright/test';
 
-export class BasicPage {
+export class BasePage {
     protected page: Page;
 
     constructor(page: Page) {
@@ -22,6 +22,4 @@ export class BasicPage {
         return this.page.title();
     }
 }
-
-
 
