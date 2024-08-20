@@ -11,8 +11,6 @@ test('Pole pizza name', async ({ page }) => {
     await page.getByPlaceholder('enter name', { exact: true }).fill('Monster Pizza');
     });
 test('Pole Destiny', async ({ page }) => {
-    test.setTimeout(120000);
-
     await page.goto('https://selectorshub.com/xpath-practice-page/');
     await page.waitForSelector('div#loader', { state: 'hidden' });
     await page.getByRole('link', { name: 'Click to practice iframe' }).click();
