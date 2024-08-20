@@ -9,6 +9,7 @@ test.describe('Home Page Tests', () => {
         homePage = new HomePage(page);
         await homePage.navigateToHomePage();
         await homePage.acceptCookies();
+        await page.waitForTimeout(10000);
     });
 
     test('should verify the title of the home page', async () => {
