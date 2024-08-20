@@ -7,8 +7,9 @@ test.describe('Home Page Tests', () => {
     test.beforeEach(async ({ page }) => {
         homePage = new HomePage(page);
         await homePage.navigateToHomePage();
-        await homePage.acceptCookies();
         await page.waitForTimeout(10000);
+        await homePage.acceptCookies();
+ 
     });
 
     test('should verify the title of the home page', async () => {
