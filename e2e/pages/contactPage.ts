@@ -10,11 +10,11 @@ export class ContactPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.nameInput = page.locator('[data-name="your-name"]');
-        this.surnameInput = page.locator('input[name="surname-value"]'); // Selektor dla nazwiska
-        this.emailInput = page.locator('input[name="email-value"]'); // Selektor dla e-mail
-        this.phoneInput = page.locator('input[name="tel-value"]'); // Selektor dla telefonu
-        this.messageTextarea = page.locator('textarea[name="message-value"]'); // Zmieniono selektor dla wiadomości
+        this.nameInput = page.locator('[data-name="name-value"]');
+        this.surnameInput = page.locator('input[name="surname-value"]');
+        this.emailInput = page.locator('input[name="email-value"]'); 
+        this.phoneInput = page.locator('input[name="tel-value"]'); 
+        this.messageTextarea = page.locator('textarea[name="message-value"]'); 
     }
 
     async acceptCookies() {
