@@ -1,22 +1,23 @@
 import { test, expect } from '@playwright/test'
 import { ContactPage } from '../pages/ContactPage'
+import { testData } from '../utils/testData'
 
 test.describe('Contact Page Test', () => {
 	test('Filling in the contact fields', async ({ page }) => {
 		const contactPage = new ContactPage(page)
 		await contactPage.navigateTo('https://ttms.com/contact/')
 
-		await contactPage.fillNameField('John')
-		await contactPage.fillSurnameField('Kowalsky')
-		await contactPage.fillPhoneField('700800900')
-		await contactPage.fillEmailField('john.kowalsky@example.com')
-		await contactPage.fillMessageField('Test is the best')
+		await contactPage.fillNameField('testData.name')
+		await contactPage.fillSurnameField('testData.surname')
+		await contactPage.fillPhoneField('testData.phone')
+		await contactPage.fillEmailField('testData.email')
+		await contactPage.fillMessageField('testData.message')
 
 		// Sprawdzenie, czy pola zostały poprawnie wypełnione
-		await expect(contactPage.getNameField()).toHaveValue('John')
-		await expect(contactPage.getSurnameField()).toHaveValue('Kowalsky')
-		await expect(contactPage.getPhoneField()).toHaveValue('700800900')
-		await expect(contactPage.getEmailField()).toHaveValue('john.kowalsky@example.com')
-		await expect(contactPage.getMessageField()).toHaveValue('Test is the best')
+		await expect(contactPage.getNameField()).toHaveValue('testData.name')
+		await expect(contactPage.getSurnameField()).toHaveValue('testData.surname')
+		await expect(contactPage.getPhoneField()).toHaveValue('testData.phone')
+		await expect(contactPage.getEmailField()).toHaveValue('testData.email')
+		await expect(contactPage.getMessageField()).toHaveValue('testData.message')
 	})
 })

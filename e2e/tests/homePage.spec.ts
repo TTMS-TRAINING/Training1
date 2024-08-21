@@ -35,4 +35,11 @@ test.describe('Home Page Tests', () => {
 		// Sprawdza, czy URL przeglądarki zmienił się na adres strony kontaktowej po kliknięciu linku.
 		await expect(page).toHaveURL('https://ttms.com/contact/')
 	})
+
+	test('should navigate to the blog page', async ({ page }) => {
+		const homePage = new HomePage(page)
+		await homePage.navigateTo('https://ttms.pl')
+		await homePage.clickBlogLink()
+		await expect(page).toHaveURL('https://ttms.com/blog/')
+	})
 })
