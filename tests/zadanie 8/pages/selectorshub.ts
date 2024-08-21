@@ -5,6 +5,8 @@ import { selectorshubData } from '../../resources/testData';
 export class SelectorsHub {
     protected page: Page;
 
+
+
     // Lokatory (elementy na stronie, z którymi będziemy wchodzić w interakcję)
     private UserName: Locator;
     private PizzaName: Locator;
