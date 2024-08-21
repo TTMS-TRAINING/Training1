@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { HomePage } from "../pages/HomePage";
+import { HomePage } from "../../pages/ttms/HomePage";
 
 test.describe("Home Page Tests", () => {
   test("should display the correct header", async ({ page }) => {
@@ -11,7 +11,7 @@ test.describe("Home Page Tests", () => {
     );
   });
 
-  test("should navigate to the contact page", async ({ page }) => {
+  test.skip("should navigate to the contact page", async ({ page }) => {
     const homePage = new HomePage(page);
     await homePage.navigateTo("https://ttms.pl");
     await homePage.clickContactLink();

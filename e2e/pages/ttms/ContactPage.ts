@@ -2,7 +2,6 @@ import { Page, Locator, expect } from "@playwright/test";
 import { BasePage } from "./BasePage";
 
 export class ContactPage extends BasePage {
-  protected acceptAllButton: Locator;
   private name: Locator;
   private surname: Locator;
   private phone: Locator;
@@ -16,6 +15,10 @@ export class ContactPage extends BasePage {
     this.phone = page.getByLabel("Phone", { exact: true });
     this.email = page.getByLabel("E-mail *", { exact: true });
     this.message = page.getByLabel("Message", { exact: true });
+  }
+
+  public getPage() {
+    return this.page;
   }
 
   async fillName(text: string) {

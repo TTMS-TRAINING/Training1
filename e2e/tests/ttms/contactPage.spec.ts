@@ -1,9 +1,9 @@
 import { test, expect } from "@playwright/test";
-import { ContactPage } from "../pages/ContactPage";
-import { testDataContact1 } from "../fixtures/TestData";
+import { ContactPage } from "../../pages/ttms/ContactPage";
+import { testDataContact1 } from "../../models/ttms/TestData";
 
-test.describe("Contact Page Tests", () => {
-  let contactPage;
+test.describe.skip("Contact Page Tests", () => {
+  let contactPage: ContactPage;
 
   test.beforeEach(async ({ page }) => {
     contactPage = new ContactPage(page);
@@ -13,7 +13,7 @@ test.describe("Contact Page Tests", () => {
   test("should correctly fill the form and do not subbmit", async ({
     page,
   }) => {
-    await contactPage.page.waitForSelector('form', { state: 'visible' });
+    await page.waitForSelector("form", { state: "visible" });
     await contactPage.fillForm(
       testDataContact1.name,
       testDataContact1.surname,

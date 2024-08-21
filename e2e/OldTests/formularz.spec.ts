@@ -43,7 +43,7 @@ test("should correctly fill out the form and show a confirmation modal after sub
   await selectAndCheck_Hobbies(page, ["Reading", "Music"]);
 
   // select and check Picture
-  await selectAndCheck_Picture(page, "../fixtures", "zero-step.jpeg");
+  await selectAndCheck_Picture(page, "../models/fixtures", "zero-step.jpeg");
 
   // fill and check Current Address
   await fillAndCheckField(
