@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "target": "ES2022",             // Target modern JavaScript
+      "module": "commonjs",           // CommonJS module system
+      "strict": true,                 // Enable strict type-checking
+      "esModuleInterop": true,        // Allow default imports from CommonJS modules
+      "skipLibCheck": true,           // Skip type-checking of declaration files
+      "forceConsistentCasingInFileNames": true,  // Enforce consistent file naming
+      "outDir": "dist",               // Output directory for compiled files
+      "rootDir": "./"                // Source directory for TypeScript files
+      //"baseUrl": "./",                      // Ustawienia bazowej ścieżki
+      //"paths": {
+      //"@/*": ["./*"]
+    },
+    "include": ["e2e/**/*.ts"],       // Include all TypeScript files in src directory
+    "exclude": ["node_modules"]       // Exclude node_modules from compilation
+}
