@@ -20,4 +20,4 @@ export class BasePage {
   async acceptAllCookies() {
     if (this.acceptAllButton) await this.acceptAllButton.click();
   }
-}
+};
