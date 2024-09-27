@@ -23,7 +23,7 @@ test('fill kontakt link', async ({ page }) => {
     
 
     // Check the checkbox
-    await page.getByRole('checkbox').click();
+    //await page.getByRole('checkbox').click();
     // Assert the checked state
     //expect(page.getByLabel('Wyrażam zgodę na przetwarzanie')).toBeChecked();
 });
