@@ -1,17 +1,14 @@
 {
   "name": "training1",
   "version": "1.0.0",
-  "description": "Training repo",
   "main": "index.js",
-  "directories": {
-    "test": "tests"
-  },
-  "devDependencies": {
-    "@playwright/test": "^1.48.1",
-    "@types/node": "^20.14.11"
-  },
   "scripts": {},
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.48.1",
+    "@types/node": "^22.7.7"
+  }
 }
